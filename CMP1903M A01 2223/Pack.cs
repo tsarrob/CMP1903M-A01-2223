@@ -81,7 +81,7 @@ namespace CMP1903M_A01_2223
         }
 
         //Deals one card
-        public static Card deal()
+        public static Card dealCard()
         {
 
 
@@ -101,7 +101,7 @@ namespace CMP1903M_A01_2223
 
         }
         //Deals the number of cards specified by 'amount'
-        public static List<Card> deal(int amount)
+        public static List<Card> dealCard(int amount)
         {
             if (pack.Count == 0)
             {
@@ -118,13 +118,13 @@ namespace CMP1903M_A01_2223
             {
                 for (int i = 0; i < amount; i++)
                 {
-                    dealtCards.Add(deal());
+                    dealtCards.Add(dealCard());
 
                 }
                 return dealtCards;
             }
         }
-        public static void Display()
+        public static void Display() //Additional method to display the pack of cards
         {
                 int count = 1;
                 foreach (Card card in pack)

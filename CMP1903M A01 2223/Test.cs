@@ -14,7 +14,7 @@ namespace CMP1903M_A01_2223
 			
 			Pack Deck = new Pack();
 			Pack.Display();
-			Pack.deal().ShowCurrentCard();
+			//Pack.deal().ShowCurrentCard();
 
 			Console.WriteLine("Input the number for the shuffle desired, 1 - fisher-yates shuffle, 2 - riffle shuffle, 3 - no shuffle");
 			Pack.shuffleCardPack(Convert.ToInt32(Console.ReadLine()));

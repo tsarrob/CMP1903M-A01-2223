@@ -9,31 +9,30 @@ namespace CMP1903M_A01_2223
     class Pack
     {
         public static List<Card> pack = new List<Card>();
-        public static List<Card> pack2 = new List<Card>();
+        public static List<Card> tempPack = new List<Card>();
         public static List<Card> dealtCards = new List<Card>();
-        public static List<Card> recentlyDealtCards = new List<Card>();
 
         //constructor
         public Pack()
         {
-            
+
             for (int suitt = 1; suitt < 5; suitt++)
             {
                 for (int valuee = 1; valuee < 14; valuee++)
                 {
                     pack.Add(new Card(valuee, suitt)); //initialising the objects into the list so setting with all the values needed to each object to make a deck of 52 cards
-                    pack2.Add(new Card(valuee, suitt));// a seperate pack of cards for the riffle shuffle
+                    
 
                 }
-                
-               
+
+
             }
 
         }
 
 
 
-                                                
+
         public static bool shuffleCardPack(int typeOfShuffle)
         {
             //Shuffles the pack based on the type of shuffle
@@ -42,22 +41,29 @@ namespace CMP1903M_A01_2223
             if (typeOfShuffle == 1)
             {
                 Random rnd = new Random();
-                for (int i = pack.Count -1; i >= 0; i-- )
+                for (int i = pack.Count -1; i >= 0; i--)
                 {
-                    int Chosen = rnd.Next(0,i);
-                    (pack[Chosen] , pack[i]) = (pack[i] , pack[Chosen]);
+                    int Chosen = rnd.Next(0, i);
+                    (pack[Chosen], pack[i]) = (pack[i], pack[Chosen]);
                 }
-                return true;   
+                return true;
             }
 
             //riffle shuffle
             else if (typeOfShuffle == 2)
             {
-                for (int i = 0; i < pack2.Count -1; i+=2)
+               
+                int j = 0;//counter
+                while (j < (pack.Count / 2)) 
                 {
-                    (pack2[i], pack[i+1]) = (pack2[i + 1], pack[i]);
+                   
+                    tempPack.Add(pack[j]);
+                    tempPack.Add(pack[j + (pack.Count / 2)]);
+                    j += 1;
+                    
                 }
-                
+                pack = tempPack; //after while loop finishes the temp pack is built with each half of the pack and riffle shuffled and then gets set back to pack 
+
                 return true;
             }
 
@@ -102,10 +108,10 @@ namespace CMP1903M_A01_2223
                 Console.WriteLine("The deck is empty");
                 return null;
             }
-        
-            else if (pack.Count<amount)
+
+            else if (pack.Count < amount)
             {
-                Console.WriteLine("Cant deal {0} cards since there is only {1} cards remaining in the deck" ,amount ,pack.Count);
+                Console.WriteLine("Cant deal {0} cards since there is only {1} cards remaining in the deck", amount, pack.Count);
                 return null;
             }
             else
@@ -113,22 +119,21 @@ namespace CMP1903M_A01_2223
                 for (int i = 0; i < amount; i++)
                 {
                     dealtCards.Add(deal());
-                   
+
                 }
                 return dealtCards;
             }
         }
         public static void Display()
         {
-       
-
-            int count = 1;
-            foreach (Card card in pack )
-            {
-                Console.Write("{0}. ", count);
-                card.ShowCurrentCard();
-                count++;
-            };
+                int count = 1;
+                foreach (Card card in pack)
+                {
+                    Console.Write("{0}. ", count);
+                    card.ShowCurrentCard();
+                    count++;
+                };
+           
         }
     }
         

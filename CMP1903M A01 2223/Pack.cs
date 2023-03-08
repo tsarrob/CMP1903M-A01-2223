@@ -10,8 +10,6 @@ namespace CMP1903M_A01_2223
     {
         public static List<Card> pack = new List<Card>();
         public static List<Card> pack2 = new List<Card>();
-        public static List<Card> packFirstHalf = new List<Card>();
-        public static List<Card> packSecondHalf = new List<Card>();
         public static List<Card> dealtCards = new List<Card>();
         public static List<Card> recentlyDealtCards = new List<Card>();
 
@@ -87,15 +85,39 @@ namespace CMP1903M_A01_2223
                 return null;                             //cant deal a card since there are no cards left so returns null
 
             }
+            else
+            {
+                Card temp = pack[0];
+                pack.RemoveAt(0);
+                return temp;
+            }
 
 
         }
-        /*public static List<Card> dealCard(int amount)
+        //Deals the number of cards specified by 'amount'
+        public static List<Card> deal(int amount)
         {
-            //Deals the number of cards specified by 'amount'
+            if (pack.Count == 0)
+            {
+                Console.WriteLine("The deck is empty");
+                return null;
+            }
+        
+            else if (pack.Count<amount)
+            {
+                Console.WriteLine("Cant deal {0} cards since there is only {1} cards remaining in the deck" ,amount ,pack.Count);
+                return null;
+            }
+            else
+            {
+                for (int i = 0; i < amount; i++)
+                {
+                    dealtCards.Add(deal());
+                   
+                }
+                return dealtCards;
+            }
         }
-        */
-
         public static void Display()
         {
        

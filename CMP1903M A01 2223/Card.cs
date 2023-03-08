@@ -13,8 +13,14 @@ namespace CMP1903M_A01_2223
         private int _Value;
         private int _Suit;
 
+        //array to use the value and suit as an index to have the coresponding string to print
+        private readonly string[] faceArray = { "Ace", "Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Jack","Queen","King" };
+        private readonly string[] suitArray = { "Spades", "Hearts", "Diamonds", "Clubs" };
 
-        //methods to access the private fields
+
+
+
+        //methods to access the private fields values
         public int Value
         {
             get 
@@ -52,6 +58,22 @@ namespace CMP1903M_A01_2223
             }
         }
         
+
+
+        //construct
+        public Card(int value, int suit)
+        {
+            Value = value;
+            Suit = suit;    
+        }
+
+       //functions
+       public void ShowCurrentCard()
+        {
+            Console.WriteLine(faceArray[Value-1] + " of " + suitArray[Suit-1]);
+        }
+
+
 
     }
 }

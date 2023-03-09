@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,7 +22,7 @@ namespace CMP1903M_A01_2223
                 for (int valuee = 1; valuee < 14; valuee++)
                 {
                     pack.Add(new Card(valuee, suitt)); //initialising the objects into the list so setting with all the values needed to each object to make a deck of 52 cards
-                    
+
 
                 }
 
@@ -41,7 +42,7 @@ namespace CMP1903M_A01_2223
             if (typeOfShuffle == 1)
             {
                 Random rnd = new Random();
-                for (int i = pack.Count -1; i >= 0; i--)
+                for (int i = pack.Count - 1; i >= 0; i--)
                 {
                     int Chosen = rnd.Next(0, i);
                     (pack[Chosen], pack[i]) = (pack[i], pack[Chosen]);
@@ -52,15 +53,15 @@ namespace CMP1903M_A01_2223
             //riffle shuffle
             else if (typeOfShuffle == 2)
             {
-               
+
                 int j = 0;//counter
-                while (j < (pack.Count / 2)) 
+                while (j < (pack.Count / 2))
                 {
-                   
+
                     tempPack.Add(pack[j]);
                     tempPack.Add(pack[j + (pack.Count / 2)]);
                     j += 1;
-                    
+
                 }
                 pack = tempPack; //after while loop finishes the temp pack is built with each half of the pack and riffle shuffled and then gets set back to pack 
 
@@ -70,7 +71,6 @@ namespace CMP1903M_A01_2223
             //don't shuffle
             else if (typeOfShuffle == 3)
             {
-                Console.WriteLine("The pack was not shuffled");
                 return true;
 
 
@@ -126,17 +126,17 @@ namespace CMP1903M_A01_2223
         }
         public static void Display() //Additional method to display the pack of cards
         {
-                int count = 1;
-                foreach (Card card in pack)
-                {
-                    Console.Write("{0}. ", count);
-                    card.ShowCurrentCard();
-                    count++;
-                };
-           
+            int count = 1;
+            foreach (Card card in pack)
+            {
+                Console.Write("{0}. ", count);
+                card.ShowCurrentCard();
+                count++;
+            };
+
         }
-    }
-        
+
+    }    
         
    
 }

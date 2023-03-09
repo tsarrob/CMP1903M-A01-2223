@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
@@ -60,6 +61,24 @@ namespace CMP1903M_A01_2223
             // testing error handling with invalid type of shuffle
             Console.WriteLine("\n testing invalid shuffle, if false then error handling works -------------\n");
             Console.WriteLine(Pack.shuffleCardPack(4));
+
+
+
+            //Additional feature requested by a user who reviewed my code
+            //console.readline() asks the user for input to choose the wanted amount of cards to be dealt and it gets checked to make sure amount
+            // is not over the cards in the pack
+            Console.WriteLine("\n Deals multiple cards by the amount the user requested -------------\n");
+            Console.Write("\n Enter the number of cards you want to deal: ");
+            Pack.dealCard(Convert.ToInt32(Console.ReadLine()));
+            Console.WriteLine("\n Cards Dealt -------------\n");
+            foreach (Card card in Pack.dealtCards)
+            {
+                card.ShowCurrentCard();
+            }
+            Console.WriteLine("\n Show deck -------------\n");
+            Pack.Display();
+               
+
 
 
 

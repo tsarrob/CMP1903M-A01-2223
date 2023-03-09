@@ -103,6 +103,7 @@ namespace CMP1903M_A01_2223
         //Deals the number of cards specified by 'amount'
         public static List<Card> dealCard(int amount)
         {
+            dealtCards.Clear();
             if (pack.Count == 0)
             {
                 Console.WriteLine("The deck is empty");
@@ -122,6 +123,7 @@ namespace CMP1903M_A01_2223
 
                 }
                 return dealtCards;
+                
             }
         }
         public static void Display() //Additional method to display the pack of cards

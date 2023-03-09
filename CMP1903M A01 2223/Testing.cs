@@ -58,7 +58,7 @@ namespace CMP1903M_A01_2223
             Pack.Display();
 
             // testing error handling with invalid type of shuffle
-            Console.WriteLine("\n testing invalid shuffle if false then error handling works -------------\n");
+            Console.WriteLine("\n testing invalid shuffle, if false then error handling works -------------\n");
             Console.WriteLine(Pack.shuffleCardPack(4));
 
 

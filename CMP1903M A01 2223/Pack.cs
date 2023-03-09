@@ -88,7 +88,7 @@ namespace CMP1903M_A01_2223
             if (pack.Count == 0)
             {
                 Console.WriteLine("The deck is empty");
-                return null;                             //cant deal a card since there are no cards left so returns null
+                return null;                     //cant deal a card since there are no cards left so returns null
 
             }
             else
